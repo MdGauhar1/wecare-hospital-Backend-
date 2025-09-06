@@ -1,6 +1,7 @@
 package com.wEcare.doctor;
 
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.List;
 public class DoctorController {
 
     private final DoctorService doctorService;
+    private final DoctorRepository doctorRepository;
 
-    public DoctorController(DoctorService doctorService) {
+    public DoctorController(DoctorService doctorService, DoctorRepository doctorRepository) {
         this.doctorService = doctorService;
+        this.doctorRepository = doctorRepository;
     }
 
     @GetMapping
@@ -35,4 +38,12 @@ public class DoctorController {
     public void deleteDoctor(@PathVariable Long id) {
         doctorService.deleteDoctor(id);
     }
+
+    // DoctorController.java
+    @GetMapping("/specialty/{id}")
+    public ResponseEntity<List<Doctor>> getDoctorsBySpecialty(@PathVariable Long id) {
+        List<Doctor> doctors = doctorRepository.findBySpecialtyId(id);
+        return ResponseEntity.ok(doctors);
+    }
+
 }
