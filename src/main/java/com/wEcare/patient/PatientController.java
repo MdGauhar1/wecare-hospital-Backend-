@@ -14,11 +14,11 @@ public class PatientController {
         this.service = service;
     }
 
-    // Create patient
-    @PostMapping
-    public Patient addPatient(@RequestBody Patient patient) {
-        return service.addPatient(patient);
-    }
+//    // Create patient
+//    @PostMapping
+//    public Patient addPatient(@RequestBody Patient patient) {
+//        return service.addPatient(patient);
+//    }
 
     // Get all patients
     @GetMapping
@@ -43,4 +43,29 @@ public class PatientController {
     public void deletePatient(@PathVariable Long id) {
         service.deletePatient(id);
     }
+
+
+
+
+
+
+
+
+
+
+    // Register
+    @PostMapping("/register")
+    public Patient register(@RequestBody Patient patient) {
+        return service.addPatient(patient);
+    }
+
+
+
+//    // 👇 New login API
+//    @PostMapping("/login")
+//    public String login(@RequestParam String username,
+//                        @RequestParam String password) {
+//        boolean success = service.login(username, password);
+//        return success ? "Login successful" : "Invalid credentials";
+//    }
 }

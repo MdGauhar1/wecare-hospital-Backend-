@@ -18,6 +18,10 @@ public class Patient {
     private String phone;
     private String email;
 
+    // 👇 Add these for login
+    private String username;
+    private String password;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Appointment> appointments;
@@ -38,6 +42,22 @@ public class Patient {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     // getters & setters

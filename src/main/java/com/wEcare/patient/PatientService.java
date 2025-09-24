@@ -1,5 +1,6 @@
 package com.wEcare.patient;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -7,15 +8,33 @@ import java.util.List;
 public class PatientService {
 
     private final PatientRepository repo;
+    private final PasswordEncoder passwordEncoder;
 
-    public PatientService(PatientRepository repo) {
+    public PatientService(PatientRepository repo, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.passwordEncoder=passwordEncoder;
     }
 
-    // Add new patient
+//    // Add new patient
+//    public Patient addPatient(Patient patient) {
+//        return repo.save(patient);
+//    }
+
+
+
     public Patient addPatient(Patient patient) {
+        // Hash the password before saving
+        String hashedPassword = passwordEncoder.encode(patient.getPassword());
+        patient.setPassword(hashedPassword);
         return repo.save(patient);
     }
+
+
+
+
+
+
+
 
     // Get all patients
     public List<Patient> getAllPatients() {
@@ -41,4 +60,28 @@ public class PatientService {
     public void deletePatient(Long id) {
         repo.deleteById(id);
     }
+
+
+
+    // 👇 New login method
+//    public boolean login(String username, String password) {
+//        Patient patient = repo.findByUsername(username);
+//        return patient != null && patient.getPassword().equals(password);
+//    }
+
+
+//    public boolean login(String username, String password) {
+//        return repo.findByUsername(username)
+//                .map(patient -> patient.getPassword().equals(password))
+//                .orElse(false);
+//    }
+
+
+    public boolean login(String username, String password) {
+        return repo.findByUsername(username)
+                .map(patient -> passwordEncoder.matches(password, patient.getPassword()))
+                .orElse(false);
+    }
+
+
 }
