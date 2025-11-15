@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY = ""; // Use environment variables in production
+    private final String SECRET_KEY = "git push origin security-updates"; // Use environment variables in production
 
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()

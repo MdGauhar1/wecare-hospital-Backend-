@@ -31,6 +31,7 @@ public class AppointmentService {
         appointment.setDate(request.getDate());
         appointment.setTime(request.getTime());
         appointment.setReason(request.getReason());
+        appointment.setPatientName(request.getPatientName());  //extra added
 
         return repo.save(appointment);
     }

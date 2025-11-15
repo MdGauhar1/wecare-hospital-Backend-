@@ -5,7 +5,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/appointments")
-@CrossOrigin(origins = "*") // allow frontend
+//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppointmentController {
 
     private final AppointmentService service;

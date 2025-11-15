@@ -49,7 +49,18 @@ public class AppointmentRequest {
 
     private String date;
     private String time;
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
     private String reason;
+    private String patientName;
+
 
 }
 

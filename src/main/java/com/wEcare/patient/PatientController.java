@@ -46,13 +46,6 @@ public class PatientController {
 
 
 
-
-
-
-
-
-
-
     // Register
     @PostMapping("/register")
     public Patient register(@RequestBody Patient patient) {
