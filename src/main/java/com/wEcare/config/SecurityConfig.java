@@ -37,12 +37,14 @@ public class SecurityConfig {
                                 "/",
                                 "/home",
                                 "/api/patients/register",
-                                "/api/auth/login",
-                                "/api/doctors/**",
-                                "/api/hospital/**",
-                                "/api/specialties/**",
-                                "/api/appointments/**"     // ✅ Added this (you forgot)
+                                "/api/auth/login"
+                              //  "/api/patients/**",
+                              //  "/api/doctors/**",
+                              //  "/api/hospital/**",
+                              //  "/api/specialties/**",
+                              //  "/api/appointments/**"     // ✅ Added this (you forgot)
                         ).permitAll()
+                        .requestMatchers("/api/patients/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
