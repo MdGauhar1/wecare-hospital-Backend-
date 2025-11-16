@@ -80,7 +80,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY = "e0F+74fM8cVSZtF6VT1y1qZP3gPz6x3xeePWPd+1o2E=";
+    private final String SECRET_KEY = "";
 
     private Key getSigningKey() {
         byte[] keyBytes = Base64.getDecoder().decode(SECRET_KEY);
