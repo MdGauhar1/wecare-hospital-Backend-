@@ -1,4 +1,4 @@
-🏥 wEcare Hospital Management System – Backend (Spring Boot)
+### 🏥 wEcare Hospital Management System – Backend (Spring Boot)
 
 This is the backend API for wEcare Hospital Management System built using Java Spring Boot 3, Spring Security + JWT, MySQL, and Hibernate/JPA.
 
